@@ -403,8 +403,16 @@ local config = {
     -- Set options
     set.relativenumber = true
 
+    set.showmode = true -- showing modes in command line
+
+    set.laststatus = 2
+
+    set.showcmd =  true -- show mode comand line
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
+    -- Comment
+    map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
+    map("v", "<leader>ll", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 
     -- Set autocommands
     vim.cmd [[
