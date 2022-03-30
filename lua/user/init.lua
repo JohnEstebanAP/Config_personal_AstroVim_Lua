@@ -25,7 +25,7 @@ local config = {
 
   -- Disable default plugins
   enabled = {
-    bufferline = false,
+    bufferline = true,
     nvim_tree = true,
     lualine = false,
     gitsigns = false,
@@ -34,7 +34,7 @@ local config = {
     comment = true,
     symbols_outline = false,
     indent_blankline = false,
-    dashboard = false,
+    dashboard = true,
     which_key = false,
     neoscroll = false,
     ts_rainbow = false,
@@ -73,6 +73,8 @@ local config = {
 --Icons
 --"kyazfani42/nvim-web-devicons"
 --
+--Este complemento intenta descaradamente emular la estética de los editores de texto GUI/Doom Emacs.
+--Proporsina la bara superios y la funcionalidad de cerar las ventanas o organizarlar
 --Bufferline
 --"akinsho/bufferline.nvim"
 --
@@ -143,6 +145,7 @@ local config = {
   --"lewis6991/gitsigns.nvim",
 
   -- Start screen
+  --Muestra la pantalla de bienvenida y las opciones de telescop para encontra archivos
   --"glepnir/dashboard-nvim",
 
   -- Color highlighting
@@ -343,7 +346,7 @@ local config = {
       -- yamlls = {
       --   settings = {
       --     yaml = {
-      --       schemas = {
+      --       schemas =Ascii Header Text {
       --         ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
       --         ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
       --         ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
@@ -414,13 +417,97 @@ local config = {
     map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
     map("v", "<leader>ll", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 
+
+
+    --@override 
+    --dashboard-nvim
+    local g = vim.g
+
+
+    g.dashboard_custom_header2 = {
+      '             ▄▄▀▀▀▀▀▀▀▀▄▄              ',
+      '          ▄▀▀            ▀▄▄           ',
+      '        ▄▀                  ▀▄         ',
+      '       ▌             ▀▄       ▀▀▄      ',
+      '      ▌                ▀▌        ▌     ',
+      '     ▐                  ▌        ▐     ',
+      '     ▌▐    ▐    ▐       ▌         ▌    ',
+      '    ▐ ▌    ▌  ▐ ▌      ▐       ▌▐ ▐    ',
+      '    ▐ ▌    ▌▄▄▀▀▌▌     ▐▀▌▀▌▄  ▐ ▌ ▌   ',
+      '     ▌▌    ▐▀▄▌▌▐▐    ▐▐▐ ▐ ▌▌ ▐ ▌▄▐   ',
+      '   ▄▀▄▐    ▌▌▄▀▄▐ ▌▌ ▐ ▌▄▀▄ ▐  ▐ ▌ ▀▄  ',
+      '  ▀▄▀  ▌  ▄▀ ▌█▐  ▐▐▀   ▌█▐ ▀▄▐ ▌▌   ▀ ',
+      '   ▀▀▄▄▐ ▀▄▀ ▀▄▀        ▀▄▀▄▀ ▌ ▐      ',
+      '      ▀▐▀▄ ▀▄        ▐      ▀▌▐        ',
+      '        ▌ ▌▐ ▀              ▐ ▐        ',
+      '        ▐ ▐ ▌    ▄▄▀▀▀▀▄    ▌ ▐        ',
+      '         ▌▐ ▐▄   ▐     ▌  ▄▀  ▐        ',
+      '        ▐  ▌▐▐▀▄  ▀▄▄▄▀ ▄▀▐   ▐        ',
+      '        ▌▌ ▌▐ ▌ ▀▄▄    ▄▌▐ ▌  ▐        ',
+      '       ▐ ▐ ▐▐ ▌    ▀▀▄▀▌▐  ▌  ▌        ',
+      '       ▌  ▌▐ ▌        ▐▀▄▌ ▐           ',
+      }
+
+    g.dashboard_custom_header ={
+    '    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠖⠚⢉⣩⣭⡭⠛⠓⠲⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀  ',
+    '    ⠀⠀⠀⠀⠀⠀⢀⡴⠋⠁⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠀  ',
+    '    ⠀⠀⠀⠀⢀⡴⠃⢀⡴⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀  ',
+    '    ⠀⠀⠀⠀⡾⠁⣠⠋⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀  ',
+    '    ⠀⠀⠀⣸⠁⢰⠃⠀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣇⠀  ',
+    '    ⠀⠀⠀⡇⠀⡾⡀⠀⠀⠀⠀⣀⣹⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠀  ',
+    '    ⠀⠀⢸⠃⢀⣇⡈⠀⠀⠀⠀⠀⠀⢀⡑⢄⡀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
+    '    ⠀⠀⢸⠀⢻⡟⡻⢶⡆⠀⠀⠀⠀⡼⠟⡳⢿⣦⡑⢄⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
+    '    ⠀⠀⣸⠀⢸⠃⡇⢀⠇⠀⠀⠀⠀⠀⡼⠀⠀⠈⣿⡗⠂⠀⠀⠀⠀⠀⠀⠀⢸⠁  ',
+    '    ⠀⠀⡏⠀⣼⠀⢳⠊⠀⠀⠀⠀⠀⠀⠱⣀⣀⠔⣸⠁⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀  ',
+    '    ⠀⠀⡇⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀  ',
+    '    ⠀⢸⠃⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⢀⠀⠀⠀⠀⠀⣾⠀⠀  ',
+    '    ⠀⣸⠀⠀⠹⡄⠀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠸⠀⠀⠀⠀⠀⡇⠀⠀  ',
+    '    ⠀⡏⠀⠀⠀⠙⣆⠀⠀⠀⠀⠀⠀⠀⢀⣠⢶⡇⠀⠀⢰⡀⠀⠀⠀⠀⠀⡇⠀⠀  ',
+    '    ⢰⠇⡄⠀⠀⠀⡿⢣⣀⣀⣀⡤⠴⡞⠉⠀⢸⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⣧⠀⠀  ',
+    '    ⣸⠀⡇⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⢹⠀⠀⢸⠀⠀⢀⣿⠇⠀⠀⠀⠁⠀⢸⠀⠀  ',
+    '    ⣿⠀⡇⠀⠀⠀⠀⠀⢀⡤⠤⠶⠶⠾⠤⠄⢸⠀⡀⠸⣿⣀⠀⠀⠀⠀⠀⠈⣇⠀  ',
+    '    ⡇⠀⡇⠀⠀⡀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠸⡌⣵⡀⢳⡇⠀⠀⠀⠀⠀⠀⢹⡀  ',
+    '    ⡇⠀⠇⠀⠀⡇⡸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠮⢧⣀⣻⢂⠀⠀⠀⠀⠀⠀⢧  ',
+    '    ⣇⠀⢠⠀⠀⢳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡎⣆⠀⠀⠀⠀⠀⠘  ',
+    }
+
+g.dashboard_custom_header1 ={
+    '',
+    ' ⣿⣿⣷⡁⢆⠈⠕⢕⢂⢕⢂⢕⢂⢔⢂⢕⢄⠂⣂⠂⠆⢂⢕⢂⢕⢂⢕⢂⢕⢂ ',
+    ' ⣿⣿⣿⡷⠊⡢⡹⣦⡑⢂⢕⢂⢕⢂⢕⢂⠕⠔⠌⠝⠛⠶⠶⢶⣦⣄⢂⢕⢂⢕ ',
+    ' ⣿⣿⠏⣠⣾⣦⡐⢌⢿⣷⣦⣅⡑⠕⠡⠐⢿⠿⣛⠟⠛⠛⠛⠛⠡⢷⡈⢂⢕⢂ ',
+    ' ⠟⣡⣾⣿⣿⣿⣿⣦⣑⠝⢿⣿⣿⣿⣿⣿⡵⢁⣤⣶⣶⣿⢿⢿⢿⡟⢻⣤⢑⢂ ',
+    ' ⣾⣿⣿⡿⢟⣛⣻⣿⣿⣿⣦⣬⣙⣻⣿⣿⣷⣿⣿⢟⢝⢕⢕⢕⢕⢽⣿⣿⣷⣔ ',
+    ' ⣿⣿⠵⠚⠉⢀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣗⢕⢕⢕⢕⢕⢕⣽⣿⣿⣿⣿ ',
+    ' ⢷⣂⣠⣴⣾⡿⡿⡻⡻⣿⣿⣴⣿⣿⣿⣿⣿⣿⣷⣵⣵⣵⣷⣿⣿⣿⣿⣿⣿⡿ ',
+    ' ⢌⠻⣿⡿⡫⡪⡪⡪⡪⣺⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃ ',
+    ' ⠣⡁⠹⡪⡪⡪⡪⣪⣾⣿⣿⣿⣿⠋⠐⢉⢍⢄⢌⠻⣿⣿⣿⣿⣿⣿⣿⣿⠏⠈ ',
+    ' ⡣⡘⢄⠙⣾⣾⣾⣿⣿⣿⣿⣿⣿⡀⢐⢕⢕⢕⢕⢕⡘⣿⣿⣿⣿⣿⣿⠏⠠⠈ ',
+    ' ⠌⢊⢂⢣⠹⣿⣿⣿⣿⣿⣿⣿⣿⣧⢐⢕⢕⢕⢕⢕⢅⣿⣿⣿⣿⡿⢋⢜⠠⠈ ',
+    ' ⠄⠁⠕⢝⡢⠈⠻⣿⣿⣿⣿⣿⣿⣿⣷⣕⣑⣑⣑⣵⣿⣿⣿⡿⢋⢔⢕⣿⠠⠈ ',
+    ' ⠨⡂⡀⢑⢕⡅⠂⠄⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⢔⢕⢕⣿⣿⠠⠈ ',
+    ' ⠄⠪⣂⠁⢕⠆⠄⠂⠄⠁⡀⠂⡀⠄⢈⠉⢍⢛⢛⢛⢋⢔⢕⢕⢕⣽⣿⣿⠠⠈ ',
+    '',
+    } 
+    g.dashboard_custom_section = {
+      a = { description = { "   Find File                 SPC f f" }, command = "Telescope find_files" },
+      b = { description = { "   Recents                   SPC f o" }, command = "Telescope oldfiles" },
+      c = { description = { "   Find Word                 SPC f w" }, command = "Telescope live_grep" },
+      d = { description = { "   New File                  SPC f n" }, command = "DashboardNewFile" },
+      e = { description = { "   Bookmarks                 SPC b m" }, command = "Telescope marks" },
+      f = { description = { "   Last Session              SPC s l" }, command = "SessionLoad" },
+      g = { description = { "   Themes                           " }, command = "Telescope colorscheme"}, 
+    }
+ -- ' '
+ -- ' '
+
     -- Set autocommands
     vim.cmd [[
       augroup packer_conf
         autocmd!
         autocmd bufwritepost plugins.lua source <afile> | PackerSync
       augroup end
-    ]]
+    ]] 
   end,
 }
 
