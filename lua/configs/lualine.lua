@@ -2,26 +2,25 @@ local M = {}
 
 local status = require "core.status"
 
+local function get_hl_by_name(name)
+  return string.format("#%06x", vim.api.nvim_get_hl_by_name(name.group, true)[name.prop])
+end
+
+local function get_hl_prop(group, prop, default)
+  local status_ok, color = pcall(get_hl_by_name, { group = group, prop = prop })
+  if status_ok then
+    default = color
+  end
+  return default
+end
+
 function M.config()
   local status_ok, lualine = pcall(require, "lualine")
   if not status_ok then
     return
   end
 
-  local colors = {
-    yellow = "#ecbe7b",
-    yellow_1 = "#ff9640",
-    grey = "#2c323c",
-    white = "#bbc2cf",
-    cyan = "#008080",
-    darkblue = "#081633",
-    green = "#98be65",
-    orange = "#FF8800",
-    violet = "#a9a1e1",
-    magenta = "#c678dd",
-    blue = "#51afef",
-    red = "#ec5f67",
-  }
+  local colors = require "default_theme.colors"
 
   local conditions = {
     buffer_not_empty = function()
@@ -37,20 +36,90 @@ function M.config()
     end,
   }
 
+  local spacer = {
+    function()
+      return " "
+    end,
+    padding = { left = 0, right = 0 },
+  }
+
   local config = {
     options = {
       disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline" },
       component_separators = "",
       section_separators = "",
-      theme = 'nord'
     },
     sections = {
-      lualine_a = {},
+      lualine_a = { spacer },
       lualine_b = {},
+      lualine_c = {
+        {
+          "branch",
+          icon = "",
+          color = { fg = get_hl_prop("Conditional", "foreground", colors.purple_1), gui = "bold" },
+          padding = { left = 2, right = 1 },
+        },
+        {
+          "filetype",
+          cond = conditions.buffer_not_empty,
+          padding = { left = 2, right = 1 },
+        },
+        {
+          "diff",
+          symbols = { added = " ", modified = "柳", removed = " " },
+          cond = conditions.hide_in_width,
+          padding = { left = 2, right = 1 },
+        },
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic" },
+          symbols = { error = " ", warn = " ", info = " ", hint = " " },
+          padding = { left = 2, right = 1 },
+        },
+        {
+          function()
+            return "%="
+          end,
+        },
+      },
+      lualine_x = {
+        {
+          status.lsp_progress,
+          color = { gui = "none" },
+          padding = { left = 0, right = 1 },
+          cond = conditions.hide_in_width,
+        },
+        {
+          status.lsp_name,
+          icon = " ",
+          color = { gui = "none" },
+          padding = { left = 0, right = 1 },
+          cond = conditions.hide_in_width,
+        },
+        {
+          status.treesitter_status,
+          color = { fg = get_hl_prop("GitSignsAdd", "foreground", colors.green) },
+          padding = { left = 1, right = 0 },
+          cond = conditions.hide_in_width,
+        },
+        {
+          "location",
+          padding = { left = 1, right = 1 },
+        },
+        {
+          "progress",
+          color = { gui = "none" },
+          padding = { left = 0, right = 0 },
+        },
+        {
+          status.progress_bar,
+          padding = { left = 1, right = 2 },
+          color = { fg = get_hl_prop("TypeDef", "foreground", colors.yellow) },
+          cond = nil,
+        },
+      },
       lualine_y = {},
-      lualine_z = {},
-      lualine_c = {},
-      lualine_x = {},
+      lualine_z = { spacer },
     },
     inactive_sections = {
       lualine_a = {},
@@ -60,133 +129,6 @@ function M.config()
       lualine_c = {},
       lualine_x = {},
     },
-  }
-
-  local function ins_left(component)
-    table.insert(config.sections.lualine_c, component)
-  end
-
-  local function ins_left_a(component)
-    table.insert(config.sections.lualine_a, component)
-  end
-  local function ins_right(component)
-    table.insert(config.sections.lualine_x, component)
-  end
-
-  local function ins_right_z(component)
-    table.insert(config.sections.lualine_z, component)
-  end
-
-
-
-  ins_left_a {
-    function()
-      return "▊"
-    end,
-    color = { fg = colors.darkblue },
-    padding = { left = 0, right = 0 },
-  }
-
-  ins_left_a{
-    "mode",
-    color = {fg = colors.grey, gui = "bold"},
-    padding = {left = 1, right = 1},
-  }
-
-  ins_left {
-    "branch",
-    color = { fg = colors.violet, gui = "bold" },
-    padding = { left = 2, right = 1 },
-  }
-
-  ins_left {
-    "filetype",
-    cond = conditions.buffer_not_empty,
-    color = { fg = colors.magenta, gui = "bold" },
-    padding = { left = 2, right = 1 },
-  }
-
-  ins_left {
-    "diff",
-    symbols = { added = " ", modified = " " , removed = " " },
-    diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.yellow_1 },
-      removed = { fg = colors.red },
-    },
-    cond = conditions.hide_in_width,
-    padding = { left = 2, right = 1 },
-  }
-
-  ins_left {
-    "diagnostics",
-    sources = { "nvim_diagnostic" },
-    symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    diagnostics_color = {
-      color_error = { fg = colors.red },
-      color_warn = { fg = colors.yellow },
-      color_info = { fg = colors.cyan },
-    },
-    padding = { left = 2, right = 1 },
-  }
-
-  ins_left {
-    function()
-      return "%="
-    end,
-  }
-
-
-  ins_right {
-    status.lsp_progress,
-    color = { gui = "none" },
-    padding = { left = 0, right = 1 },
-    cond = conditions.hide_in_width,
-  }
-
-  ins_right {
-    status.lsp_name,
-    icon = " ",
-    color = { gui = "none" },
-    padding = { left = 0, right = 1 },
-    cond = conditions.hide_in_width,
-  }
-
-  ins_right {
-    status.treesitter_status,
-    color = { fg = colors.green },
-    padding = { left = 1, right = 0 },
-    cond = conditions.hide_in_width,
-  }
-
-  -- ins_right {
-  --   "location",
-  --   padding = { left = 1, right = 1 },
-  -- }
-
-  ins_right{
-    "progress"
-  }
-
-
-
-  ins_right {
-    status.progress_bar,
-    padding = { left = 0, right = 0 },
-    color = { fg = colors.yellow },
-    cond = nil,
-  }
-
-  ins_right_z {
-    "fileformat",
-  }
-
-  ins_right_z {
-    function()
-      return "▊"
-    end,
-    color = { fg = colors.darkblue },
-    padding = { left = 0, right = -1 },
   }
 
   lualine.setup(require("core.utils").user_plugin_opts("plugins.lualine", config))

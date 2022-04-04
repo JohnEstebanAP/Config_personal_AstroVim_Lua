@@ -291,7 +291,39 @@ local config = {
     packer = {
       compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
     },
+
+    lualine = {
+      config ={
+        options = {
+          theme = "nord"
+        }
+      },
+
+      sections = {
+        lualine_a = {
+          {
+            "mode",
+            padding = {left = 1, right = 1},
+          },
+        },
+        lualine_z = {
+          {
+            "fileformat"
+          },
+          {
+            " ",
+            color = { fg = "#202120"},
+            padding = { left = 0, right = -1},
+          },
+        }
+      },
+    },
+
+    toggleterm = {
+      size = 50       
+    }
   },
+
 
   -- Add paths for including more VS Code style snippets in luasnip
   luasnip = {
@@ -302,7 +334,10 @@ local config = {
   ["which-key"] = {
     -- Add bindings to the normal mode <leader> mappings
     register_n_leader = {
-      -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
+      ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
+      -- ["ll"] ={"cmd>lua require('Comment.api').toggle_current_linewise()<CR>","Comentar codio"},
+      ["tv"] ={"<cmd>lua require('core.utils').toggle_term_cmd('fish')<CR>","terminal en vertical"}
+   
     },
   },
 
@@ -405,7 +440,7 @@ local config = {
     map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
     map("v", "<leader>ll", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
 
-    --Formatting texto
+   -- Formatting texto
     map("n", "<leader>f", ":Format<CR>", opts)
     --@override 
     --dashboard-nvim
@@ -459,45 +494,8 @@ g.dashboard_custom_header1 ={
       f = { description = { "   Last Session              SPC s l" }, command = "SessionLoad" },
       g = { description = { "   Themes                           " }, command = "Telescope colorscheme"}, 
     }
- -- ' '
- -- ' '
--- local prettier = require("prettier")
--- prettier.setup({
---   bin = 'prettier', -- or `prettierd`
---   filetypes = {
---     "css",
---     "java",
---     "graphql",
---     "html",
---     "javascript",
---     "javascriptreact",
---     "json",
---     "less",
---     "markdown",
---     "scss",
---     "typescript",
---     "typescriptreact",
---     "yaml",
---   },
---
---   -- prettier format options (you can use config files too. ex: `.prettierrc`)
---   arrow_parens = "always",
---   bracket_spacing = true,
---   embedded_language_formatting = "auto",
---   end_of_line = "lf",
---   html_whitespace_sensitivity = "css",
---   jsx_bracket_same_line = false,
---   jsx_single_quote = false,
---   print_width = 80,
---   prose_wrap = "preserve",
---   quote_props = "as-needed",
---   semi = true,
---   single_quote = false,
---   tab_width = 2,
---   trailing_comma = "es5",
---   use_tabs = false,
---   vue_indent_script_and_style = false,
--- })
+     -- ' '
+     -- ' '
     -- Set autocommands
     vim.cmd [[
       augroup packer_conf
