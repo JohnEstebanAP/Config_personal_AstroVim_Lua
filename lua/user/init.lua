@@ -165,7 +165,7 @@ local config = {
   -- "numToStr/Comment.nvim",
 
   -- Indentation
-  --""Este cokmplemento se utiliza para mostrar líneas verticales finas, para la identacion de cata Tap como en if,for etc. 
+  --""Este cokmplemento se utiliza para mostrar líneas verticales finas, para la identacion de cata Tap como en if,for etc.
   --  "lukas-reineke/indent-blankline.nvim",
 
   -- Keymaps popup
@@ -209,20 +209,20 @@ local config = {
 
       --" colocar el puntero en una palabra o lugar especifico
       --'easymotion/vim-easymotion'
-     
+
       --"Este complemento tiene como objetivo hacer que NERDTree se sienta como un verdadero panel, independiente de las pestañas.
       --'jistr/vim-nerdtree-tabs'
 
-      --"Un complemento de NERDTree que muestra los indicadores de estado de git. 
+      --"Un complemento de NERDTree que muestra los indicadores de estado de git.
       --'Xuyuanp/nerdtree-git-plugin'
 
-      --" Agrega íconos de tipo de archivo a los complementos de Vim como: NERDTree, vim-airlines, CtrlP, unite, Denite, lightline, vim-startify y muchos más 
+      --" Agrega íconos de tipo de archivo a los complementos de Vim como: NERDTree, vim-airlines, CtrlP, unite, Denite, lightline, vim-startify y muchos más
       --'ryanoasis/vim-devicons'
 
-      --"Sintaxis adicional y resaltado para archivos nerdtree 
+      --"Sintaxis adicional y resaltado para archivos nerdtree
       --'tiagofumo/vim-nerdtree-syntax-highlight'
 
-      --"" Fugitive es el principal complemento de Vim para Git. 
+      --"" Fugitive es el principal complemento de Vim para Git.
       --'tpope/vim-fugitive'
 
       --"" Un complemento de Vim que muestra un git diff en la columna del signo. Muestra qué líneas se han agregado, modificado o eliminado.
@@ -236,14 +236,14 @@ local config = {
       --"" Proporciona una manera fácil de explorar las etiquetas del archivo actual y obtenga una descripción general de su estructura.
       --'majutsushi/tagbar'
 
-      --"" Es un complemento que proporciona linting (verificación de sintaxis y errores semánticos) 
+      --"" Es un complemento que proporciona linting (verificación de sintaxis y errores semánticos)
       --'dense-analysis/ale'
 
       --Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 
       --"" TYPING
 
-      --"Surround.vim tiene que ver con alrededores: paréntesis, corchetes, comillas, Etiquetas XML y más. El complemento proporciona asignaciones para eliminar fácilmente, cambiar y agregar ese entorno de dos en dos. 
+      --"Surround.vim tiene que ver con alrededores: paréntesis, corchetes, comillas, Etiquetas XML y más. El complemento proporciona asignaciones para eliminar fácilmente, cambiar y agregar ese entorno de dos en dos.
       --'tpope/vim-surround'
 
       --"" Vim-Session
@@ -320,7 +320,7 @@ local config = {
     },
 
     toggleterm = {
-      size = 50       
+      size = 50
     }
   },
 
@@ -337,7 +337,7 @@ local config = {
       ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
       -- ["ll"] ={"cmd>lua require('Comment.api').toggle_current_linewise()<CR>","Comentar codio"},
       ["tv"] ={"<cmd>lua require('core.utils').toggle_term_cmd('fish')<CR>","terminal en vertical"}
-   
+
     },
   },
 
@@ -374,7 +374,7 @@ local config = {
     virtual_text = true,
     underline = true,
   },
-  
+
   -- null-ls configuration
   ["null-ls"] = function()
     -- Formatting and linting
@@ -434,7 +434,9 @@ local config = {
     --set.laststatus = 2
 
     --set.showcmd =  true -- show mode comand line
-    -- Set key bindings
+
+
+   -- Set key bindings
     map("n", "<C-s>", ":w!<CR>", opts)
     -- Comment
     map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
@@ -442,10 +444,16 @@ local config = {
 
    -- Formatting texto
     map("n", "<leader>f", ":Format<CR>", opts)
-    --@override 
+
+    --@override
     --dashboard-nvim
     local g = vim.g
 
+    --" Todos los idiomas compatibles con Kite
+    --let  g: kite_supported_languages  ​​= [ ' * ' ]
+    g.kite_supported_languages = {'*'}
+
+    --dashboard-nvim
     g.dashboard_custom_header ={
     '    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠖⠚⢉⣩⣭⡭⠛⠓⠲⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀  ',
     '    ⠀⠀⠀⠀⠀⠀⢀⡴⠋⠁⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠀  ',
@@ -469,7 +477,7 @@ local config = {
     '    ⣇⠀⢠⠀⠀⢳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡎⣆⠀⠀⠀⠀⠀⠘  ',
     }
 
-g.dashboard_custom_header1 ={
+    g.dashboard_custom_header1 ={
     ' ⣿⣿⣷⡁⢆⠈⠕⢕⢂⢕⢂⢕⢂⢔⢂⢕⢄⠂⣂⠂⠆⢂⢕⢂⢕⢂⢕⢂⢕⢂ ',
     ' ⣿⣿⣿⡷⠊⡢⡹⣦⡑⢂⢕⢂⢕⢂⢕⢂⠕⠔⠌⠝⠛⠶⠶⢶⣦⣄⢂⢕⢂⢕ ',
     ' ⣿⣿⠏⣠⣾⣦⡐⢌⢿⣷⣦⣅⡑⠕⠡⠐⢿⠿⣛⠟⠛⠛⠛⠛⠡⢷⡈⢂⢕⢂ ',
@@ -484,7 +492,7 @@ g.dashboard_custom_header1 ={
     ' ⠄⠁⠕⢝⡢⠈⠻⣿⣿⣿⣿⣿⣿⣿⣷⣕⣑⣑⣑⣵⣿⣿⣿⡿⢋⢔⢕⣿⠠⠈ ',
     ' ⠨⡂⡀⢑⢕⡅⠂⠄⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⢔⢕⢕⣿⣿⠠⠈ ',
     ' ⠄⠪⣂⠁⢕⠆⠄⠂⠄⠁⡀⠂⡀⠄⢈⠉⢍⢛⢛⢛⢋⢔⢕⢕⢕⣽⣿⣿⠠⠈ ',
-    } 
+    }
     g.dashboard_custom_section = {
       a = { description = { "   Find File                 SPC f f" }, command = "Telescope find_files" },
       b = { description = { "   Recents                   SPC f o" }, command = "Telescope oldfiles" },
@@ -492,17 +500,24 @@ g.dashboard_custom_header1 ={
       d = { description = { "   New File                  SPC f n" }, command = "DashboardNewFile" },
       e = { description = { "   Bookmarks                 SPC b m" }, command = "Telescope marks" },
       f = { description = { "   Last Session              SPC s l" }, command = "SessionLoad" },
-      g = { description = { "   Themes                           " }, command = "Telescope colorscheme"}, 
+      g = { description = { "   Themes                           " }, command = "Telescope colorscheme"},
     }
      -- ' '
      -- ' '
     -- Set autocommands
+    --      autocmd bufWritePre  :%s/\s\+$//e
+
+  --  autocmd.BufWritePre = {'Format<CR>'}
     vim.cmd [[
       augroup packer_conf
         autocmd!
         autocmd bufwritepost plugins.lua source <afile> | PackerSync
+        autocmd bufWritePre * :%s/\s\+$//e
+        autocmd bufWritePre * : Format
       augroup end
-    ]] 
+    ]]
+
+
   end,
 }
 
