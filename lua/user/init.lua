@@ -3,9 +3,82 @@ local config = {
   -- Set colorscheme
   colorscheme = "default_theme",
   -- colorscheme = "nord",
+  -- set vim options here (vim.<first_key>.<second_key> =  value)
+  options = {
+    opt = {
+    -- Set options
+      relativenumber = false, -- sets vim.opt.relativenumber
 
-  -- Default theme configuration
-  default_theme = {
+    --showmode = false -- showing modes in command line
+    --laststatus = 2
+    --showcmd =  true -- show mode comand line
+
+
+    },
+    g = {
+      mapleader = " ", -- sets vim.g.mapleader
+      --@override
+      --dashboard-nvim
+
+      --" Todos los idiomas compatibles con Kite
+      --let  g: kite_supported_languages  ​​= [ ' * ' ]
+      kite_supported_languages = {'*'},
+
+      -- dashboard_custom_header1 ={
+      -- ' ⣿⣿⣷⡁⢆⠈⠕⢕⢂⢕⢂⢕⢂⢔⢂⢕⢄⠂⣂⠂⠆⢂⢕⢂⢕⢂⢕⢂⢕⢂ ',
+      -- ' ⣿⣿⣿⡷⠊⡢⡹⣦⡑⢂⢕⢂⢕⢂⢕⢂⠕⠔⠌⠝⠛⠶⠶⢶⣦⣄⢂⢕⢂⢕ ',
+      -- ' ⣿⣿⠏⣠⣾⣦⡐⢌⢿⣷⣦⣅⡑⠕⠡⠐⢿⠿⣛⠟⠛⠛⠛⠛⠡⢷⡈⢂⢕⢂ ',
+      -- ' ⠟⣡⣾⣿⣿⣿⣿⣦⣑⠝⢿⣿⣿⣿⣿⣿⡵⢁⣤⣶⣶⣿⢿⢿⢿⡟⢻⣤⢑⢂ ',
+      -- ' ⣾⣿⣿⡿⢟⣛⣻⣿⣿⣿⣦⣬⣙⣻⣿⣿⣷⣿⣿⢟⢝⢕⢕⢕⢕⢽⣿⣿⣷⣔ ',
+      -- ' ⣿⣿⠵⠚⠉⢀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣗⢕⢕⢕⢕⢕⢕⣽⣿⣿⣿⣿ ',
+      -- ' ⢷⣂⣠⣴⣾⡿⡿⡻⡻⣿⣿⣴⣿⣿⣿⣿⣿⣿⣷⣵⣵⣵⣷⣿⣿⣿⣿⣿⣿⡿ ',
+      -- ' ⢌⠻⣿⡿⡫⡪⡪⡪⡪⣺⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃ ',
+      -- ' ⠣⡁⠹⡪⡪⡪⡪⣪⣾⣿⣿⣿⣿⠋⠐⢉⢍⢄⢌⠻⣿⣿⣿⣿⣿⣿⣿⣿⠏⠈ ',
+      -- ' ⡣⡘⢄⠙⣾⣾⣾⣿⣿⣿⣿⣿⣿⡀⢐⢕⢕⢕⢕⢕⡘⣿⣿⣿⣿⣿⣿⠏⠠⠈ ',
+      -- ' ⠌⢊⢂⢣⠹⣿⣿⣿⣿⣿⣿⣿⣿⣧⢐⢕⢕⢕⢕⢕⢅⣿⣿⣿⣿⡿⢋⢜⠠⠈ ',
+      -- ' ⠄⠁⠕⢝⡢⠈⠻⣿⣿⣿⣿⣿⣿⣿⣷⣕⣑⣑⣑⣵⣿⣿⣿⡿⢋⢔⢕⣿⠠⠈ ',
+      -- ' ⠨⡂⡀⢑⢕⡅⠂⠄⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⢔⢕⢕⣿⣿⠠⠈ ',
+      -- ' ⠄⠪⣂⠁⢕⠆⠄⠂⠄⠁⡀⠂⡀⠄⢈⠉⢍⢛⢛⢛⢋⢔⢕⢕⢕⣽⣿⣿⠠⠈ ',
+      -- },
+    },
+  },
+
+  --dashboard-nvim
+  header ={
+      '    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠖⠚⢉⣩⣭⡭⠛⠓⠲⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀  ',
+      '    ⠀⠀⠀⠀⠀⠀⢀⡴⠋⠁⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠀  ',
+      '    ⠀⠀⠀⠀⢀⡴⠃⢀⡴⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀  ',
+      '    ⠀⠀⠀⠀⡾⠁⣠⠋⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀  ',
+      '    ⠀⠀⠀⣸⠁⢰⠃⠀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣇⠀  ',
+      '    ⠀⠀⠀⡇⠀⡾⡀⠀⠀⠀⠀⣀⣹⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠀  ',
+      '    ⠀⠀⢸⠃⢀⣇⡈⠀⠀⠀⠀⠀⠀⢀⡑⢄⡀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
+      '    ⠀⠀⢸⠀⢻⡟⡻⢶⡆⠀⠀⠀⠀⡼⠟⡳⢿⣦⡑⢄⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
+      '    ⠀⠀⣸⠀⢸⠃⡇⢀⠇⠀⠀⠀⠀⠀⡼⠀⠀⠈⣿⡗⠂⠀⠀⠀⠀⠀⠀⠀⢸⠁  ',
+      '    ⠀⠀⡏⠀⣼⠀⢳⠊⠀⠀⠀⠀⠀⠀⠱⣀⣀⠔⣸⠁⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀  ',
+      '    ⠀⠀⡇⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀  ',
+      '    ⠀⢸⠃⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⢀⠀⠀⠀⠀⠀⣾⠀⠀  ',
+      '    ⠀⣸⠀⠀⠹⡄⠀⠀⠈⠁⠈⠀⠀⠀⠀⠀⠀⡞⠀⠀⠸⠀⠀⠀⠀⠀⡇⠀⠀  ',
+      '    ⠀⡏⠀⠀⠀⠙⣆⠀⠀⠀⠀⠀⠀⠀⢀⣠⢶⡇⠀⠀⢰⡀⠀⠀⠀⠀⠀⡇⠀⠀  ',
+      '    ⢰⠇⡄⠀⠀⠀⡿⢣⣀⣀⣀⡤⠴⡞⠉⠀⢸⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⣧⠀⠀  ',
+      '    ⣸⠀⡇⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⢹⠀⠀⢸⠀⠀⢀⣿⠇⠀⠀⠀⠁⠀⢸⠀⠀  ',
+      '    ⣿⠀⡇⠀⠀⠀⠀⠀⢀⡤⠤⠶⠶⠾⠤⠄⢸⠀⡀⠸⣿⣀⠀⠀⠀⠀⠀⠈⣇⠀  ',
+      '    ⡇⠀⡇⠀⠀⡀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠸⡌⣵⡀⢳⡇⠀⠀⠀⠀⠀⠀⢹⡀  ',
+      '    ⡇⠀⠇⠀⠀⡇⡸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠮⢧⣀⣻⢂⠀⠀⠀⠀⠀⠀⢧  ',
+      '    ⣇⠀⢠⠀⠀⢳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡎⣆⠀⠀⠀⠀⠀⠘  ',
+      },
+  --
+  -- section={
+  --       a = { description = { "   Find File                 SPC f f" }, command = "Telescope find_files" },
+  --       b = { description = { "   Recents                   SPC f o" }, command = "Telescope oldfiles" },
+  --       c = { description = { "   Find Word                 SPC f w" }, command = "Telescope live_grep" },
+  --       d = { description = { "   New File                  SPC f n" }, command = "DashboardNewFile" },
+  --       e = { description = { "   Bookmarks                 SPC b m" }, command = "Telescope marks" },
+  --       f = { description = { "   Last Session              SPC s l" }, command = "SessionLoad" },
+  --       g = { description = { "   Themes                           " }, command = "Telescope colorscheme"},
+  --     },
+
+    -- Default theme configuration
+    default_theme = {
     diagnostics_style = { italic = true },
     -- Modify the color table
     colors = {
@@ -19,32 +92,13 @@ local config = {
       return highlights
     end,
   },
-
-  -- Disable default plugins
-  enabled = {
-    bufferline = true,
-    neo_tree = true,
-    lualine = true,
-    gitsigns = true,
-    colorizer = true,
-    toggle_term = true,
-    comment = true,
-    symbols_outline = true,
-    indent_blankline = true,
-    dashboard = true,
-    which_key = true,
-    neoscroll = true,
-    ts_rainbow = true,
-    ts_autotag = true,
-  },
-
   -- Disable AstroNvim ui features
   ui = {
     nui_input = true,
     telescope_select = true,
   },
 --******************************
---Plugins instalados por defecto
+-- Plugins instalados por defecto
 --******************************
 --Administrador de plugins
 --"wbthomason/packer.nvim"
@@ -181,7 +235,7 @@ local config = {
   -- Get extra JSON schemas
   -- "b0o/SchemaStore.nvim" },
 
- 
+
   -- Configure plugins
   plugins = {
     -- Add plugins, the packer syntax without the "use"
@@ -189,6 +243,18 @@ local config = {
       --*****************************************************************************
       -- Plug install packages
       --*****************************************************************************
+      -- You can disable default plugins as follows:
+      -- ["goolord/alpha-nvim"] = { disable = true },
+      -- You can also add new plugins here as well:
+      -- { "andweeb/presence.nvim" },
+      -- {
+      --   "ray-x/lsp_signature.nvim",
+      --   event = "BufRead",
+      --   config = function()
+      --     require("lsp_signature").setup()
+      --   end,
+      -- },
+      --
       --Themes
       {"arcticicestudio/nord-vim"},
       --"****************************
@@ -201,7 +267,28 @@ local config = {
       --"****************************
       --"****************************
       --"***********IDE**************
-
+      {
+        'tzachar/cmp-tabnine',
+        run='./install.sh',
+        requires = 'hrsh7th/nvim-cmp',
+        config = function()
+          astronvim.add_user_cmp_source 'cmp_tabnine'
+        end
+      },
+      {
+        "hrsh7th/cmp-emoji",
+        after = "nvim-cmp",
+        config = function()
+          astronvim.add_user_cmp_source "emoji"
+        end,
+      },
+      {
+        "mehalter/cmp-pandoc-references",
+        after = "nvim-cmp",
+        config = function()
+          astronvim.add_user_cmp_source "pandoc_references"
+        end,
+      },
       -- Resaltar sintaxis de diferentes lenguajes
       -- {"sheerun/vim-polyglot"}
 
@@ -297,40 +384,84 @@ local config = {
     packer = {
       compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
     },
-  
-
-    --Config of lualine
-  
-    lualine = {
-      config ={
-        options = {
-          theme = "nord"
-        }
-      },
-
-      sections = {
-        lualine_a = {
-          {
-            "mode",
-            padding = {left = 1, right = 1},
-          },
-        },
-        lualine_z = {
-          {
-            "fileformat"
-          },
-          {
-            " ",
-            color = { fg = "#202120"},
-            padding = { left = 0, right = -1},
-          },
-        }
-      },
-    },
-
+    -- --Config of lualine
+    -- feline = {
+    --   config ={
+    --     options = {
+    --       theme = "nord"
+    --     }
+    --   },
+    --
+    --   sections = {
+    --     lualine_a = {
+    --       {
+    --         "mode",
+    --         padding = {left = 1, right = 1},
+    --       },
+    --     },
+    --     lualine_z = {
+    --       {
+    --         "fileformat"
+    --       },
+    --       {
+    --         " ",
+    --         color = { fg = "#202120"},
+    --         padding = { left = 0, right = -1},
+    --       },
+    --     }
+    --   },
+    -- },
+    --
     toggleterm = {
       size = 20
-    }
+    },
+
+    cmp = function(opts)
+      -- opts parameter is the default options table
+      -- the function is lazy loaded so cmp is able to be required
+      local cmp = require "cmp"
+      -- modify the mapping part of the table
+      -- opts.mapping["<C-x>"] = cmp.mapping.select_next_item()
+      require'cmp'.setup {
+        sources = {
+          {name = 'cmp_tabnine'},
+        }
+      }
+
+      local tabnine = require('cmp_tabnine.config')
+      tabnine:setup({
+	      max_lines = 1000;
+	      max_num_results = 20;
+	      sort = true;
+	      run_on_every_keystroke = true;
+	      snippet_placeholder = '..';
+	      ignored_file_types = { -- default is not to ignore
+      		-- uncomment to ignore in lua:
+	      	-- lua = true
+      	};
+	      show_prediction_strength = true;
+      })
+
+      local compare = require('cmp.config.compare')
+      cmp.setup({
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            require('cmp_tabnine.compare'),
+            compare.offset,
+            compare.exact,
+            compare.score,
+            compare.recently_used,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+          },
+        },
+      })
+      -- return the new table to be used
+      return opts
+    end
   },
   -- LuaSnip Options
   luasnip = {
@@ -351,7 +482,7 @@ local config = {
         -- second key is the prefix, <leader> prefixes
         ["<leader>"] = {
           -- which-key registration table for normal mode, leader prefix
-          -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" }, 
+          -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
           ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
           -- ["ll"] ={"cmd>lua require('Comment.api').toggle_current_linewise()<CR>","Comentar codio"},
           ["tv"] ={"<cmd>lua require('core.utils').toggle_term_cmd('fish')<CR>","terminal en vertical"}
@@ -368,10 +499,13 @@ local config = {
   -- true == 1000
   cmp = {
     source_priority = {
+      TabNine = 1000,
       nvim_lsp = 1000,
       luasnip = 750,
       buffer = 500,
       path = 250,
+      emoji = 700,
+      pandoc_references = 600,
     },
   },
 
@@ -455,89 +589,17 @@ local config = {
   -- good place to configure mappings and vim options
   polish = function()
     local map = vim.keymap.set
-    local set = vim.opt
-    -- Set options
-    set.relativenumber = true
-
-    --set.showmode = true -- showing modes in command line
-
-    --set.laststatus = 2
-
-    --set.showcmd =  true -- show mode comand line
-
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>")
 
     -- Comment
-    map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", opts)
-    map("v", "<leader>ll", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
+    map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>")
+    map("v", "<leader>ll", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 
     -- Formatting texto
-    map("n", "<leader>f", ":Format<CR>", opts)
+    map("n", "<leader>f", ":Format<CR>")
 
-    --@override
-    --dashboard-nvim
-    local g = vim.g
-
-    --" Todos los idiomas compatibles con Kite
-    --let  g: kite_supported_languages  ​​= [ ' * ' ]
-    g.kite_supported_languages = {'*'}
-
-    --dashboard-nvim
-    g.dashboard_custom_header ={
-    '    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠤⠖⠚⢉⣩⣭⡭⠛⠓⠲⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀  ',
-    '    ⠀⠀⠀⠀⠀⠀⢀⡴⠋⠁⠀⠀⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠳⢦⡀⠀⠀⠀⠀  ',
-    '    ⠀⠀⠀⠀⢀⡴⠃⢀⡴⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣆⠀⠀⠀  ',
-    '    ⠀⠀⠀⠀⡾⠁⣠⠋⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀  ',
-    '    ⠀⠀⠀⣸⠁⢰⠃⠀⠀⠀⠈⢣⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣇⠀  ',
-    '    ⠀⠀⠀⡇⠀⡾⡀⠀⠀⠀⠀⣀⣹⣆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⠀  ',
-    '    ⠀⠀⢸⠃⢀⣇⡈⠀⠀⠀⠀⠀⠀⢀⡑⢄⡀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
-    '    ⠀⠀⢸⠀⢻⡟⡻⢶⡆⠀⠀⠀⠀⡼⠟⡳⢿⣦⡑⢄⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇  ',
-    '    ⠀⠀⣸⠀⢸⠃⡇⢀⠇⠀⠀⠀⠀⠀⡼⠀⠀⠈⣿⡗⠂⠀⠀⠀⠀⠀⠀⠀⢸⠁  ',
-    '    ⠀⠀⡏⠀⣼⠀⢳⠊⠀⠀⠀⠀⠀⠀⠱⣀⣀⠔⣸⠁⠀⠀⠀⠀⠀⠀⠀⢠⡟⠀  ',
-    '    ⠀⠀⡇⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⠀  ',
-    '    ⠀⢸⠃⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠀⢀⠀⠀⠀⠀⠀⣾⠀⠀  ',
-    '    ⠀⣸⠀⠀⠹⡄⠀⠀⠈⠁⠈⠀⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠸⠀⠀⠀⠀⠀⡇⠀⠀  ',
-    '    ⠀⡏⠀⠀⠀⠙⣆⠀⠀⠀⠀⠀⠀⠀⢀⣠⢶⡇⠀⠀⢰⡀⠀⠀⠀⠀⠀⡇⠀⠀  ',
-    '    ⢰⠇⡄⠀⠀⠀⡿⢣⣀⣀⣀⡤⠴⡞⠉⠀⢸⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⣧⠀⠀  ',
-    '    ⣸⠀⡇⠀⠀⠀⠀⠀⠀⠉⠀⠀⠀⢹⠀⠀⢸⠀⠀⢀⣿⠇⠀⠀⠀⠁⠀⢸⠀⠀  ',
-    '    ⣿⠀⡇⠀⠀⠀⠀⠀⢀⡤⠤⠶⠶⠾⠤⠄⢸⠀⡀⠸⣿⣀⠀⠀⠀⠀⠀⠈⣇⠀  ',
-    '    ⡇⠀⡇⠀⠀⡀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠸⡌⣵⡀⢳⡇⠀⠀⠀⠀⠀⠀⢹⡀  ',
-    '    ⡇⠀⠇⠀⠀⡇⡸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠮⢧⣀⣻⢂⠀⠀⠀⠀⠀⠀⢧  ',
-    '    ⣇⠀⢠⠀⠀⢳⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡎⣆⠀⠀⠀⠀⠀⠘  ',
-    }
-
-    g.dashboard_custom_header1 ={
-    ' ⣿⣿⣷⡁⢆⠈⠕⢕⢂⢕⢂⢕⢂⢔⢂⢕⢄⠂⣂⠂⠆⢂⢕⢂⢕⢂⢕⢂⢕⢂ ',
-    ' ⣿⣿⣿⡷⠊⡢⡹⣦⡑⢂⢕⢂⢕⢂⢕⢂⠕⠔⠌⠝⠛⠶⠶⢶⣦⣄⢂⢕⢂⢕ ',
-    ' ⣿⣿⠏⣠⣾⣦⡐⢌⢿⣷⣦⣅⡑⠕⠡⠐⢿⠿⣛⠟⠛⠛⠛⠛⠡⢷⡈⢂⢕⢂ ',
-    ' ⠟⣡⣾⣿⣿⣿⣿⣦⣑⠝⢿⣿⣿⣿⣿⣿⡵⢁⣤⣶⣶⣿⢿⢿⢿⡟⢻⣤⢑⢂ ',
-    ' ⣾⣿⣿⡿⢟⣛⣻⣿⣿⣿⣦⣬⣙⣻⣿⣿⣷⣿⣿⢟⢝⢕⢕⢕⢕⢽⣿⣿⣷⣔ ',
-    ' ⣿⣿⠵⠚⠉⢀⣀⣀⣈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣗⢕⢕⢕⢕⢕⢕⣽⣿⣿⣿⣿ ',
-    ' ⢷⣂⣠⣴⣾⡿⡿⡻⡻⣿⣿⣴⣿⣿⣿⣿⣿⣿⣷⣵⣵⣵⣷⣿⣿⣿⣿⣿⣿⡿ ',
-    ' ⢌⠻⣿⡿⡫⡪⡪⡪⡪⣺⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃ ',
-    ' ⠣⡁⠹⡪⡪⡪⡪⣪⣾⣿⣿⣿⣿⠋⠐⢉⢍⢄⢌⠻⣿⣿⣿⣿⣿⣿⣿⣿⠏⠈ ',
-    ' ⡣⡘⢄⠙⣾⣾⣾⣿⣿⣿⣿⣿⣿⡀⢐⢕⢕⢕⢕⢕⡘⣿⣿⣿⣿⣿⣿⠏⠠⠈ ',
-    ' ⠌⢊⢂⢣⠹⣿⣿⣿⣿⣿⣿⣿⣿⣧⢐⢕⢕⢕⢕⢕⢅⣿⣿⣿⣿⡿⢋⢜⠠⠈ ',
-    ' ⠄⠁⠕⢝⡢⠈⠻⣿⣿⣿⣿⣿⣿⣿⣷⣕⣑⣑⣑⣵⣿⣿⣿⡿⢋⢔⢕⣿⠠⠈ ',
-    ' ⠨⡂⡀⢑⢕⡅⠂⠄⠉⠛⠻⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⢔⢕⢕⣿⣿⠠⠈ ',
-    ' ⠄⠪⣂⠁⢕⠆⠄⠂⠄⠁⡀⠂⡀⠄⢈⠉⢍⢛⢛⢛⢋⢔⢕⢕⢕⣽⣿⣿⠠⠈ ',
-    }
-    g.dashboard_custom_section = {
-      a = { description = { "   Find File                 SPC f f" }, command = "Telescope find_files" },
-      b = { description = { "   Recents                   SPC f o" }, command = "Telescope oldfiles" },
-      c = { description = { "   Find Word                 SPC f w" }, command = "Telescope live_grep" },
-      d = { description = { "   New File                  SPC f n" }, command = "DashboardNewFile" },
-      e = { description = { "   Bookmarks                 SPC b m" }, command = "Telescope marks" },
-      f = { description = { "   Last Session              SPC s l" }, command = "SessionLoad" },
-      g = { description = { "   Themes                           " }, command = "Telescope colorscheme"},
-    }
-     -- ' '
-     -- ' '
-    -- Set autocommands
-    --      autocmd bufWritePre  :%s/\s\+$//e
-
-    -- Set autocommands
+   -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", {})
     vim.api.nvim_create_autocmd("BufWritePost", {
       desc = "Sync packer after modifying plugins.lua",
@@ -546,9 +608,10 @@ local config = {
       command = "source <afile> | PackerSync",
     })
 
+
     -- Set up custom filetypes
     -- vim.filetype.add {
-    --   extension = {
+    -- extension = {
     --     foo = "fooscript",
     --   },
     --   filename = {
@@ -559,7 +622,6 @@ local config = {
     --   },
     -- }
     --
-
 
     --  autocmd.BufWritePre = {'Format<CR>'}
     vim.cmd [[
