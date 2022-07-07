@@ -1,5 +1,4 @@
 local config = {
-
   -- Set colorscheme
   colorscheme = "default_theme",
   -- colorscheme = "nord",
@@ -289,6 +288,9 @@ local config = {
           astronvim.add_user_cmp_source "pandoc_references"
         end,
       },
+      {
+        'mikelue/vim-maven-plugin'
+      },
       -- Resaltar sintaxis de diferentes lenguajes
       -- {"sheerun/vim-polyglot"}
 
@@ -445,7 +447,7 @@ local config = {
       local compare = require('cmp.config.compare')
       cmp.setup({
         sorting = {
-          priority_weight = 2,
+          priority_weight = 4,
           comparators = {
             require('cmp_tabnine.compare'),
             compare.offset,
@@ -480,6 +482,12 @@ local config = {
       -- first key is the mode, n == normal mode
       n = {
         -- second key is the prefix, <leader> prefixes
+        -- ["<S>"]= {
+        --   [";"] = {"k", "^"},
+        --   ["O"]= { "j", "v"},
+        --   ["A"]= { "h", "^"},
+        --   ["E"]= { "l", "<="},
+        -- },
         ["<leader>"] = {
           -- which-key registration table for normal mode, leader prefix
           -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
@@ -591,8 +599,16 @@ local config = {
     local map = vim.keymap.set
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>")
+    -- navegacion del cursor
+    map("n", "<S-h>", "k")
+    map("n", "<S-n>", "j")
+    map("n", "<S-t>", "h")
+    map("n", "<S-s>", "l")
 
-    -- Comment
+    -- navegar  por una selecion de busqueda
+    map("n", "m", "n")
+    map("n", "<S-m>", "N")
+
     map("n", "<leader>ll", "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>")
     map("v", "<leader>ll", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 
@@ -610,7 +626,7 @@ local config = {
 
 
     -- Set up custom filetypes
-    -- vim.filetype.add {
+  -- vim.filetype.add {
     -- extension = {
     --     foo = "fooscript",
     --   },
@@ -633,6 +649,7 @@ local config = {
       augroup end
     ]]
 
+        -- autocmd bufWritePre * : !npx prettier --write .
   end,
 }
 
